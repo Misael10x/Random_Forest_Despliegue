@@ -1,0 +1,42 @@
+body {
+    background-color: #000;
+    color: #0f0; /* Verde fosforescente */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #0ff; /* Azul fosforescente */
+    border-radius: 10px;
+    max-width: 600px;
+    background-color: #222;
+}
+
+h1 {
+    color: #ff0; /* Amarillo fosforescente */
+}
+
+button {
+    background-color: #ff00ff; /* Magenta fosforescente */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff1493;
+}
+
+.results {
+    margin-top: 20px;
+}
+
+.plot img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Forest Regression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Random Forest Regression</h1>
+        <form action="/predict" method="POST">
+            <button type="submit">Realizar Predicción</button>
+        </form>
+
+        {% if mse and r2 %}
+        <div class="results">
+            <h2>Resultados</h2>
+            <p><strong>Error Cuadrático Medio (MSE):</strong> {{ mse }}</p>
+            <p><strong>R²:</strong> {{ r2 }}</p>
+        </div>
+
+        <div class="plot">
+            <h2>Gráfica de Predicciones</h2>
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfica de Predicciones vs Real">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
