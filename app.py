@@ -13,14 +13,7 @@ app = Flask(_name_)
 @app.route('/')
 def index():
     # Cargar el dataset y seleccionar las primeras 10 filas
-    df = pd.read_csv('DataSetAndroid/TotalFeatures-ISCXFlowMeter.csv')
-    data_preview = df.head(10).to_html(classes='table table-striped')
-    return render_template('index.html', data_preview=data_preview)
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    # Cargar el dataset y seleccionar las primeras 10 filas para mostrar en el index
-    df = pd.read_csv('DataSetAndroid/TotalFeatures-ISCXFlowMeter.csv')
+    df = pd.read_csv('DataSetAndroid/reducido.csv')
     data_preview = df.head(10).to_html(classes='table table-striped')
 
     # Simulación de datos para demostración
@@ -72,3 +65,4 @@ def predict():
     return render_template('index.html', mse=mse, r2=r2, plot_url=plot_url, data_preview=data_preview)
 
 if _name_ == '_main_':
+    app.run(debug=True)
