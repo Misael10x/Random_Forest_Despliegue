@@ -8,14 +8,21 @@ from sklearn.metrics import mean_squared_error, r2_score
 import io
 import base64
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # Cargar el dataset y seleccionar las primeras 10 filas
+    df = pd.read_csv('DataSetAndroid/TotalFeatures-ISCXFlowMeter.csv')
+    data_preview = df.head(10).to_html(classes='table table-striped')
+    return render_template('index.html', data_preview=data_preview)
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    # Cargar el dataset y seleccionar las primeras 10 filas para mostrar en el index
+    df = pd.read_csv('DataSetAndroid/TotalFeatures-ISCXFlowMeter.csv')
+    data_preview = df.head(10).to_html(classes='table table-striped')
+
     # Simulación de datos para demostración
     data = {
         'feature1': np.random.rand(100),
@@ -61,7 +68,7 @@ def predict():
     img.seek(0)
     plot_url = base64.b64encode(img.getvalue()).decode()
 
-    return render_template('index.html', mse=mse, r2=r2, plot_url=plot_url)
+    # Renderizar la plantilla con los resultados y la vista previa de datos
+    return render_template('index.html', mse=mse, r2=r2, plot_url=plot_url, data_preview=data_preview)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if _name_ == '_main_':
